@@ -21,9 +21,9 @@ app.use(express.static(__dirname + "/public"));
 
 //检测传入的查询字符串是否包含test=1的中间件
 app.use(function (req, res, next) {
-    res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
+    res.locals.showTests = app.get("env") !== "production" && req.query.test === "1";
     next();
-})
+});
 
 //设置路由
 app.get("/", function (req, res) {
@@ -31,24 +31,24 @@ app.get("/", function (req, res) {
     // res.type("text/plain");
     // res.send("Meadow")
     res.render("home");
-})
-
-app.get('/tours/hood-river', function (req, res) {
-    res.status(200);
-    res.render('tours/hood-river');
 });
 
-app.get('/tours/request-group-rate', function (req, res) {
+app.get("/tours/hood-river", function (req, res) {
     res.status(200);
-    res.render('tours/request-group-rate');
+    res.render("tours/hood-river");
+});
+
+app.get("/tours/request-group-rate", function (req, res) {
+    res.status(200);
+    res.render("tours/request-group-rate");
 });
 
 
 app.get("/about", function (req, res) {
     //默认的状态码为200
     const randomFortune = fortune.getFortune();
-    res.render("about", {fortune: randomFortune, pageTestScript: '/qa/tests-about.js'})
-})
+    res.render("about", {fortune: randomFortune, pageTestScript: "/qa/tests-about.js"});
+});
 
 //设置404页面
 
@@ -57,7 +57,7 @@ app.use(function (req, res) {
     res.status(404);
     //res.send("404 - Not Found");
     res.render("404");
-})
+});
 //设置500页面
 
 app.use(function (err, req, res, next) {
@@ -65,7 +65,7 @@ app.use(function (err, req, res, next) {
     res.status(500);
     //res.send("500 - Server Error");
     res.render("500");
-})
+});
 
 //启动监听
 app.listen(app.get("port"), function () {

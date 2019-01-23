@@ -6,4 +6,4 @@ const fortunes = ["Conquer your fears or they will conquer you.",
 
 module.exports.getFortune = function () {
     return fortunes[Math.floor(Math.random() * fortunes.length)];
-}
+};
